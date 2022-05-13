@@ -24,7 +24,15 @@ public class Cliente {
 		this.nombre = nombre;
 		this.domicilio = domicilio;
 	}
-
+	
+	public Cliente(int dni, String nombre, String apellido , Domicilio domicilio, ObraSocial obraSocial) {
+		super();
+		this.dni = dni;
+		this.apellido = apellido;
+		this.nombre = nombre;
+		this.obraSocial = obraSocial;
+		this.domicilio = domicilio;
+	}
 	public int getDni() {
 		return dni;
 	}

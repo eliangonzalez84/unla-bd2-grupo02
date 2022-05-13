@@ -11,6 +11,12 @@ public class Item {
 		this.producto = producto;
 	}
 
+	public Item(Producto producto,  int cantidad) {
+		super();
+		this.cantidad = cantidad;
+		this.producto = producto;
+	}
+
 	public int getId() {
 		return id;
 	}

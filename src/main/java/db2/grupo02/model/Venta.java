@@ -2,6 +2,8 @@ package db2.grupo02.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import clasesPojos.Item;
+
 public class Venta{
 
 	private int id;
@@ -40,18 +42,20 @@ public class Venta{
 		this.sucursal = sucursal;
 		this.items = items;
 	}
-	
-	public Venta( String formaPago, LocalDate fecha, float total, Cliente cliente, Empleado empleadoAtencion,
-			Empleado empleadoCobro, Sucursal sucursal) {
+
+	public Venta(String formaPago, LocalDate fecha, Cliente cliente, Empleado empleadoAtencion,
+			Empleado empleadoCobro, Sucursal sucursal, List<Item> items) {
 		super();
 		this.formaPago = formaPago;
 		this.fecha = fecha;
-		this.total = total;
+		this.total = calcularTotal();
 		this.cliente = cliente;
 		this.empleadoAtencion = empleadoAtencion;
 		this.empleadoCobro = empleadoCobro;
 		this.sucursal = sucursal;
+		this.items = items;
 	}
+
 	public int getId() {
 		return id;
 	}
@@ -123,6 +127,13 @@ public class Venta{
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-
+	
+	private float calcularTotal() {
+		float total = 0;
+		for(Item item: items) {
+			total += item.getCantidad() * item.getProducto().getPrecio();
+		}
+		return total;
+	}
 	
 }

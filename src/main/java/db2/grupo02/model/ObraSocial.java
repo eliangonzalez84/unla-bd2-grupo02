@@ -10,8 +10,14 @@ public class ObraSocial {
         this.nombre = nombre;
         this.nro_afiliado = nro_afiliado;
     }
+    
+    public ObraSocial(int nro_afiliado, String nombre) {
+		super();
+		this.nombre = nombre;
+		this.nro_afiliado = nro_afiliado;
+	}
 
-    public int getId() {
+	public int getId() {
         return id;
     }
 
