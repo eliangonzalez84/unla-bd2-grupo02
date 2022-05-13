@@ -40,7 +40,18 @@ public class Venta{
 		this.sucursal = sucursal;
 		this.items = items;
 	}
-
+	
+	public Venta( String formaPago, LocalDate fecha, float total, Cliente cliente, Empleado empleadoAtencion,
+			Empleado empleadoCobro, Sucursal sucursal) {
+		super();
+		this.formaPago = formaPago;
+		this.fecha = fecha;
+		this.total = total;
+		this.cliente = cliente;
+		this.empleadoAtencion = empleadoAtencion;
+		this.empleadoCobro = empleadoCobro;
+		this.sucursal = sucursal;
+	}
 	public int getId() {
 		return id;
 	}
