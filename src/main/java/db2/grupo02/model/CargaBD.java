@@ -58,7 +58,9 @@ public class CargaBD {
 		Producto p9 = new Producto(9, "Shampoo Plusbelle", 400.0f, farmacia, ch);
 		Producto p10 = new Producto(10, "Panuelos descartables Elite", 50.0f, farmacia, elite);
 		Producto[] productos = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 };
-
+		Producto[] productos1 =  { p1, p2};
+		Producto[] productos2 =  { p3, p4};
+		Producto[] productos3 =  { p5, p6};
 		/*
 		 * // METODO DE PAGO EFECTIVO-CREDITO-DEBITO
 		 * 
@@ -84,13 +86,13 @@ public class CargaBD {
 
 		// SE REALIZA 30 VENTAS ALEATORIAS PARA LA SUCURSAL DE LANUS
 		ventas.addAll(generarVentas(s1, new Cliente[] { c1, c2 }, "efectivo", productos, LocalDate.of(2021, 01, 01),
-				LocalDate.now(), 30));
+				LocalDate.now(), 3));
 		// SE REALIZA 25 VENTAS ALEATORIAS PARA LA SUCURSAL DE LANUS
-		ventas.addAll(generarVentas(s2, new Cliente[] { c1, c2 }, "debito", productos, LocalDate.of(2021, 01, 01),
-				LocalDate.now(), 25));
+		ventas.addAll(generarVentas(s2, new Cliente[] { c1, c2 }, "debito", productos1, LocalDate.of(2021, 01, 01),
+				LocalDate.now(), 3));
 		// SE REALIZA 35 VENTAS ALEATORIAS PARA LA SUCURSAL DE ONCE
-		ventas.addAll(generarVentas(s3, new Cliente[] { c1, c2 }, "efectivo", productos, LocalDate.of(2021, 01, 01),
-				LocalDate.now(), 35));
+		ventas.addAll(generarVentas(s3, new Cliente[] { c1, c2 }, "efectivo", productos2, LocalDate.of(2021, 01, 01),
+				LocalDate.now(), 3));
 
 		// GUARDO LAS VENTAS COMO UNA COLECCION EN LA BASE DE DATOS
 		try {
@@ -164,12 +166,9 @@ public class CargaBD {
 				// CARGAM PRODUCTO ALEATORIAMENTE
 				items.add(new Item(producto, cantidadDeProducto));
 			}
-			// String nroDeTicket = String.valueOf(sucursal.getId()) + "-" +
-			// String.valueOf(i);
-			ventas.add(new Venta(formaDePago, fecha, cliente, atencion, cobro, sucursal, items));
+			String nroDeTicket = String.valueOf(sucursal.getId()) + "-" + String.valueOf(i);
+			ventas.add(new Venta(nroDeTicket, formaDePago, fecha, cliente, atencion, cobro, sucursal, items));
 
-			// ventas.add(new Venta(nroDeTicket, fecha, atencion, cobro, sucursal, cliente,
-			// items));
 		}
 		return ventas;
 	}

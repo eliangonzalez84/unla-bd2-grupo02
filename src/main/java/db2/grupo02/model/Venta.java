@@ -5,6 +5,7 @@ import java.util.List;
 public class Venta{
 
 	private int id;
+	private String nroTicket;
 	private String formaPago;
 	private LocalDate fecha;
 	private float total;
@@ -41,19 +42,28 @@ public class Venta{
 		this.items = items;
 	}
 
-	public Venta(String formaPago, LocalDate fecha, Cliente cliente, Empleado empleadoAtencion,
+	public Venta(String nroTicket, String formaPago, LocalDate fecha, Cliente cliente, Empleado empleadoAtencion,
 			Empleado empleadoCobro, Sucursal sucursal, List<Item> items) {
 		super();
+		this.nroTicket = nroTicket;
 		this.formaPago = formaPago;
 		this.fecha = fecha;
-		this.total = calcularTotal();
 		this.cliente = cliente;
 		this.empleadoAtencion = empleadoAtencion;
 		this.empleadoCobro = empleadoCobro;
 		this.sucursal = sucursal;
 		this.items = items;
+		this.total = calcularTotal();
+	}
+	
+	public String getNroTicket() {
+		return this.nroTicket;
 	}
 
+	public void setNroTicket(String nroTicket) {
+		this.nroTicket = nroTicket;
+	}
+	
 	public int getId() {
 		return id;
 	}

@@ -21,6 +21,7 @@ import com.mongodb.WriteResult;
 
 
 import connectionMongo.ConnectorDB;
+import db2.grupo02.model.Sucursal;
 import db2.grupo02.model.Venta;
 
 public class VentaDao {
@@ -354,7 +355,7 @@ public class VentaDao {
 		return gson.toJson(jsonElement);
 	}
 
-
+*/
 	// DETALES Y TOTALES DE VENTAS POR CADENA COMPLETA
 	public static String detallesYTotalesDeVentas(LocalDate fechaDesde, LocalDate fechaHasta) {
 		return detallesYTotalesDeVentas(fechaDesde, fechaHasta, null);
@@ -366,8 +367,8 @@ public class VentaDao {
 		DBObject matchFields = new BasicDBObject();
 		matchFields.put("fecha", BasicDBObjectBuilder.start().add("$gt", fechaDesde.toString())
 				.add("$lt", fechaHasta.toString()).get());
-		matchFields.put("sucursal.codigo",
-				(sucursal == null) ? (new BasicDBObject("$exists", true)) : sucursal.getCodigo());
+		matchFields.put("sucursal.id",
+				(sucursal == null) ? (new BasicDBObject("$exists", true)) : sucursal.getId());
 		DBObject match = new BasicDBObject("$match", matchFields);
 		// DIVIDO LOS DOCUMENTOS POR CADA ITEM
 		DBObject unwind = new BasicDBObject("$unwind", "$items");
@@ -379,7 +380,7 @@ public class VentaDao {
 		
 		// CREO EL SET DE DETALLES
 		DBObject detallesSetFields = new BasicDBObject("producto", "$items.producto.descripcion");
-		detallesSetFields.put("precio", "$items.producot.precio");
+		detallesSetFields.put("precio", "$items.producto.precio");
 		detallesSetFields.put("cantidad", "$items.cantidad");
 		DBObject detallesSet = new BasicDBObject("$addToSet", detallesSetFields);
 		// Creo los campos del grupo
@@ -399,7 +400,7 @@ public class VentaDao {
 		JsonElement jsonElement = new JsonParser().parse(output.results().toString());
 		return gson.toJson(jsonElement);
 	}
-
+/*
 	
 	// DETALLES Y TOTALES DE VENTAS (CADENA COMPLETA)
 	public static String detallesYTotalesDeVentasPorMedioDePago(LocalDate fechaDesde, LocalDate fechaHasta) {

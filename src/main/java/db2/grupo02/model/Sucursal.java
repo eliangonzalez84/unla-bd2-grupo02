@@ -8,6 +8,11 @@ public class Sucursal {
     private Domicilio domicilio;
     private List<Empleado> empleados;
     
+    
+	public Sucursal() {
+		super();
+	}
+
 	public Sucursal(int id, String descripcion, Domicilio domicilio, List<Empleado> empleados) {
 		super();
 		this.id = id;
