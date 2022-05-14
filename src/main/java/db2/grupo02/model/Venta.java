@@ -2,8 +2,6 @@ package db2.grupo02.model;
 import java.time.LocalDate;
 import java.util.List;
 
-import clasesPojos.Item;
-
 public class Venta{
 
 	private int id;
@@ -130,9 +128,12 @@ public class Venta{
 	
 	private float calcularTotal() {
 		float total = 0;
-		for(Item item: items) {
-			total += item.getCantidad() * item.getProducto().getPrecio();
-		}
+		if(items!=null) {
+		if(!items.isEmpty()) {
+			for(Item item: items) {
+				total += item.getCantidad() * item.getProducto().getPrecio();
+			}
+		}}
 		return total;
 	}
 	
