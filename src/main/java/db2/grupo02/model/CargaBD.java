@@ -96,7 +96,7 @@ public class CargaBD {
 		try {
 			String uri = "mongodb://localhost:27017";
 			MongoClient mongoClient = new MongoClient(new MongoClientURI(uri));
-			//mongoClient.dropDatabase("farmacia"); // Elimina la base de datos si existe
+			mongoClient.dropDatabase("farmacia"); // Elimina la base de datos si existe
 			VentaDao.getInstance();
 			for (Venta venta : ventas) {
 				VentaDao.agregar(venta);
