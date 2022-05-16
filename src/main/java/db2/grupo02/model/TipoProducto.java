@@ -4,6 +4,8 @@ public class TipoProducto{
     private int id;
     private String tipo;
    
+    public TipoProducto() {}
+    
     public TipoProducto(int id, String tipo) {
         this.id = id;
         this.tipo = tipo;
@@ -25,4 +27,8 @@ public class TipoProducto{
         this.tipo = tipo;
     }
 
+	@Override
+	public String toString() {
+		return "TipoProducto [id=" + id + ", tipo=" + tipo + "]";
+	}
 }

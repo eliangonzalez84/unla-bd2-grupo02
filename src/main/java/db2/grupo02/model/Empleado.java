@@ -2,15 +2,17 @@ package db2.grupo02.model;
 
 public class Empleado {
 
-    private int dni;
-    private int cuil;
+    private long dni;
+    private String cuil;
     private String apellido;
     private String nombre;
     private Boolean encargado;
     private ObraSocial obraSocial;
     private Domicilio domicilio;
     
-	public Empleado(int dni, int cuil, String apellido, String nombre, Boolean encargado, ObraSocial obraSocial,
+    public Empleado() {}
+    
+	public Empleado(long dni, String cuil, String apellido, String nombre, Boolean encargado, ObraSocial obraSocial,
 			Domicilio domicilio) {
 		super();
 		this.dni = dni;
@@ -22,19 +24,19 @@ public class Empleado {
 		this.domicilio = domicilio;
 	}
 
-	public int getDni() {
+	public long getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(long dni) {
 		this.dni = dni;
 	}
 
-	public int getCuil() {
+	public String getCuil() {
 		return cuil;
 	}
 
-	public void setCuil(int cuil) {
+	public void setCuil(String cuil) {
 		this.cuil = cuil;
 	}
 
@@ -77,5 +79,10 @@ public class Empleado {
 	public void setDomicilio(Domicilio domicilio) {
 		this.domicilio = domicilio;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Empleado [dni=" + dni + ", cuil=" + cuil + ", apellido=" + apellido + ", nombre=" + nombre
+				+ ", encargado=" + encargado + ", obraSocial=" + obraSocial + ", domicilio=" + domicilio + "]";
+	}
 }

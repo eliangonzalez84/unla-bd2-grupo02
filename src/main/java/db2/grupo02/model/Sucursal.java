@@ -6,13 +6,11 @@ public class Sucursal {
     private int id;
     private String descripcion;
     private Domicilio domicilio;
-    private List<Empleado> empleados;
+    //private List<Empleado> empleados; consultar si hace falta para este modelo
     
+    public Sucursal() {}
     
-	public Sucursal() {
-		super();
-	}
-
+    /*
 	public Sucursal(int id, String descripcion, Domicilio domicilio, List<Empleado> empleados) {
 		super();
 		this.id = id;
@@ -20,7 +18,8 @@ public class Sucursal {
 		this.domicilio = domicilio;
 		this.empleados = empleados;
 	}
-
+	*/
+    
 	public Sucursal(int id, String descripcion, Domicilio domicilio) {
 		super();
 		this.id = id;
@@ -52,6 +51,7 @@ public class Sucursal {
 		this.domicilio = domicilio;
 	}
 
+	/*
 	public List<Empleado> getEmpleados() {
 		return empleados;
 	}
@@ -59,5 +59,10 @@ public class Sucursal {
 	public void setEmpleados(List<Empleado> empleados) {
 		this.empleados = empleados;
 	}
-   
+	*/
+	
+	@Override
+	public String toString() {
+		return "Sucursal [id=" + id + ", descripcion=" + descripcion + ", domicilio=" + domicilio + "]";
+	}
 }

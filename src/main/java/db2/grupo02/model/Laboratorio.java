@@ -4,6 +4,8 @@ public class Laboratorio {
     private int id;
     private String nombre;
 
+    public Laboratorio() {}
+    
     public Laboratorio(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
@@ -25,4 +27,8 @@ public class Laboratorio {
 		this.nombre = nombre;
 	}
 
+	@Override
+	public String toString() {
+		return "Laboratorio [id=" + id + ", nombre=" + nombre + "]";
+	}
 }

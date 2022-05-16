@@ -1,28 +1,15 @@
 package db2.grupo02.model;
 public class Item {
-	private int id;
+	
 	private int cantidad;
 	private Producto producto;
 	
-	public Item(int id, int cantidad, Producto producto) {
-		super();
-		this.id = id;
-		this.cantidad = cantidad;
-		this.producto = producto;
-	}
-
-	public Item(Producto producto,  int cantidad) {
+	public Item() {}
+	
+	public Item(int cantidad, Producto producto) {
 		super();
 		this.cantidad = cantidad;
 		this.producto = producto;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public int getCantidad() {
@@ -41,4 +28,16 @@ public class Item {
 		this.producto = producto;
 	}
 	
+	public float calcularSubTotal() {
+		return this.getProducto().getPrecio()*this.cantidad;
+	}
+	
+	public boolean equals(Item item) {
+		return (this.producto.equals(item.getProducto())) && (this.cantidad == item.getCantidad());
+	}
+
+	@Override
+	public String toString() {
+		return "Item [cantidad=" + cantidad + ", producto=" + producto + "]";
+	}
 }

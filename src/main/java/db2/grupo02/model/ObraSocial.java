@@ -3,42 +3,43 @@ public class ObraSocial {
 	
     private int id;
     private String nombre;
-    private int nro_afiliado;
+    private int nroAfiliado;
     
-    public ObraSocial(int id, String nombre, int nro_afiliado) {
-        this.id = id;
-        this.nombre = nombre;
-        this.nro_afiliado = nro_afiliado;
-    }
+    public ObraSocial() {}
     
-    public ObraSocial(int nro_afiliado, String nombre) {
+	public ObraSocial(int id, String nombre, int nroAfiliado) {
 		super();
+		this.id = id;
 		this.nombre = nombre;
-		this.nro_afiliado = nro_afiliado;
+		this.nroAfiliado = nroAfiliado;
 	}
 
 	public int getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    public String getNombre() {
-        return nombre;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public int getNro_afiliado() {
-        return nro_afiliado;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setNro_afiliado(int nro_afiliado) {
-        this.nro_afiliado = nro_afiliado;
-    }
+	public int getNroAfiliado() {
+		return nroAfiliado;
+	}
 
+	public void setNroAfiliado(int nroAfiliado) {
+		this.nroAfiliado = nroAfiliado;
+	}
+
+	@Override
+	public String toString() {
+		return "ObraSocial [id=" + id + ", nombre=" + nombre + ", nroAfiliado=" + nroAfiliado + "]";
+	}
 }

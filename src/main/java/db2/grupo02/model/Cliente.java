@@ -2,13 +2,15 @@ package db2.grupo02.model;
 
 public class Cliente {
 
-    private int dni;
+    private long dni;
     private String apellido;
     private String nombre;
     private ObraSocial obraSocial;
     private Domicilio domicilio;
     
-	public Cliente(int dni, String apellido, String nombre, ObraSocial obraSocial, Domicilio domicilio) {
+    public Cliente() {}
+    
+	public Cliente(long dni, String apellido, String nombre, ObraSocial obraSocial, Domicilio domicilio) {
 		super();
 		this.dni = dni;
 		this.apellido = apellido;
@@ -17,27 +19,20 @@ public class Cliente {
 		this.domicilio = domicilio;
 	}
 
-	public Cliente(int dni, String apellido, String nombre, Domicilio domicilio) {
+	public Cliente(long dni, String apellido, String nombre, Domicilio domicilio) {
 		super();
 		this.dni = dni;
 		this.apellido = apellido;
 		this.nombre = nombre;
+		this.obraSocial = null;
 		this.domicilio = domicilio;
 	}
-	
-	public Cliente(int dni, String nombre, String apellido , Domicilio domicilio, ObraSocial obraSocial) {
-		super();
-		this.dni = dni;
-		this.apellido = apellido;
-		this.nombre = nombre;
-		this.obraSocial = obraSocial;
-		this.domicilio = domicilio;
-	}
-	public int getDni() {
+
+	public long getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(long dni) {
 		this.dni = dni;
 	}
 
@@ -73,4 +68,9 @@ public class Cliente {
 		this.domicilio = domicilio;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", obraSocial=" + obraSocial
+				+ ", domicilio=" + domicilio + "]";
+	}
 }

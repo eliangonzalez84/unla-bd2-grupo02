@@ -1,11 +1,11 @@
 package db2.grupo02.model;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Venta{
 
 	private int id;
-	private String nroTicket;
 	private String formaPago;
 	private LocalDate fecha;
 	private float total;
@@ -14,6 +14,8 @@ public class Venta{
 	private Empleado empleadoCobro;
 	private Sucursal sucursal;
 	private List<Item> items;
+	
+	public Venta() {}
 	
 	public Venta(int id, String formaPago, LocalDate fecha, float total, Cliente cliente, Empleado empleadoAtencion,
 			Empleado empleadoCobro, Sucursal sucursal) {
@@ -26,6 +28,7 @@ public class Venta{
 		this.empleadoAtencion = empleadoAtencion;
 		this.empleadoCobro = empleadoCobro;
 		this.sucursal = sucursal;
+		this.items = new ArrayList<Item>();
 	}
 
 	public Venta(int id, String formaPago, LocalDate fecha, float total, Cliente cliente, Empleado empleadoAtencion,
@@ -42,28 +45,6 @@ public class Venta{
 		this.items = items;
 	}
 
-	public Venta(String nroTicket, String formaPago, LocalDate fecha, Cliente cliente, Empleado empleadoAtencion,
-			Empleado empleadoCobro, Sucursal sucursal, List<Item> items) {
-		super();
-		this.nroTicket = nroTicket;
-		this.formaPago = formaPago;
-		this.fecha = fecha;
-		this.cliente = cliente;
-		this.empleadoAtencion = empleadoAtencion;
-		this.empleadoCobro = empleadoCobro;
-		this.sucursal = sucursal;
-		this.items = items;
-		this.total = calcularTotal();
-	}
-	
-	public String getNroTicket() {
-		return this.nroTicket;
-	}
-
-	public void setNroTicket(String nroTicket) {
-		this.nroTicket = nroTicket;
-	}
-	
 	public int getId() {
 		return id;
 	}
@@ -94,6 +75,10 @@ public class Venta{
 
 	public void setTotal(float total) {
 		this.total = total;
+	}
+	
+	public void setTotal() {
+		this.total = calcularTotal();
 	}
 
 	public Cliente getCliente() {
@@ -135,16 +120,46 @@ public class Venta{
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-	
-	private float calcularTotal() {
+
+	public float calcularTotal() {
 		float total = 0;
-		if(items!=null) {
-		if(!items.isEmpty()) {
-			for(Item item: items) {
-				total += item.getCantidad() * item.getProducto().getPrecio();
-			}
-		}}
+		for (Item item: this.items) total += item.calcularSubTotal();
 		return total;
 	}
-	
+		
+	 public Item traerItem(Producto producto) {
+		Item item = null;
+		boolean encontrado = false;
+		int i = 0, cantidad = this.items.size();
+		while((i < cantidad) && (!encontrado)){			
+		    if (this.items.get(i).getProducto().equals(producto)) {
+		    	item = this.items.get(i);
+		    	encontrado = true;
+		    }
+		    i++;
+		}
+		return item;
+	}
+	 
+	public boolean agregar(Producto producto, int cantidad) {
+		boolean agregar = false;
+		Item item = traerItem(producto);
+		if ( item == null) {
+			agregar = this.items.add(new Item(cantidad, producto));
+			this.setTotal(this.getTotal()+producto.getPrecio()*cantidad);
+		}
+		else{
+			item.setCantidad(cantidad + item.getCantidad());
+			agregar = true;
+			this.setTotal(this.calcularTotal());
+		}
+		return agregar;
+	}
+
+	@Override
+	public String toString() {
+		return "Venta [id=" + id + ", formaPago=" + formaPago + ", fecha=" + fecha + ", total=" + total + ", cliente="
+				+ cliente + ", empleadoAtencion=" + empleadoAtencion + ", empleadoCobro=" + empleadoCobro
+				+ ", sucursal=" + sucursal + ", items=" + items + "]";
+	}
 }

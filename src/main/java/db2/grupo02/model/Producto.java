@@ -66,4 +66,13 @@ public class Producto {
 		this.laboratorio = laboratorio;
 	}
    
+	public boolean equals(Producto producto) {
+		return this.codNumerico == producto.getCodNumerico();
+	}
+
+	@Override
+	public String toString() {
+		return "Producto [codNumerico=" + codNumerico + ", descripcion=" + descripcion + ", precio=" + precio
+				+ ", tipoProducto=" + tipoProducto + ", laboratorio=" + laboratorio + "]";
+	}
 }
