@@ -15,6 +15,8 @@ import com.google.gson.GsonBuilder;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 
+import conexionMongo.VentaDao;
+
 public class App {
 
 	public static void main(String[] args) {
@@ -175,21 +177,23 @@ public class App {
 		
 		
 		// GUARDO LAS VENTAS COMO UNA COLECCION EN LA BASE DE DATOS
-		/*
+		
 		try {
 			MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
 			mongoClient.dropDatabase("farmacia"); // Elimina la base de datos si existe
 			VentaDao.getInstance();			
 			for(Venta venta: ventas) {
 				VentaDao.agregar(venta);
+				System.out.println("CARGO VENTA");
+				System.out.println(venta.getId() + "\n");
 			}
-					System.out.println("\nATENCION : Se cargo de manera adecuadad la Base de datos.");
+					System.out.println("\nATENCION : Se cargo de manera adecuada la Base de datos.");
 		} 
 		catch (Exception e) {
 			System.out.println("\nERROR!, hubo problemas en la carga de los datos.");
 			e.printStackTrace();
 		}
-		*/
+		
 	}
 
 }

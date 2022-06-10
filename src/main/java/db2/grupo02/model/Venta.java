@@ -162,4 +162,5 @@ public class Venta{
 				+ cliente + ", empleadoAtencion=" + empleadoAtencion + ", empleadoCobro=" + empleadoCobro
 				+ ", sucursal=" + sucursal + ", items=" + items + "]";
 	}
+	
 }
